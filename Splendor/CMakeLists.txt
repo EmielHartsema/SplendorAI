@@ -16,6 +16,9 @@ set(SPLENDOR_BIN_DIR
 
 add_library(SplendorLib
     src/Game.cpp
+    src/Juwel.cpp
+    src/GameState.cpp
+    src/Player.cpp
 )
 
 target_include_directories(SplendorLib
