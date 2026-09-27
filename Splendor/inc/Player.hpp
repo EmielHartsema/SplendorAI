@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <memory>
+
 #include <JuwelCard.hpp>
 #include <DecisionMaker.hpp>
 
@@ -13,6 +14,18 @@ class Player
 public:
     explicit Player(std::unique_ptr<DecisionMaker> decision_maker);
 
+    DecisionMaker& decisionMaker()
+    {
+        return *m_decision_maker;
+    }
+
+    const DecisionMaker& decisionMaker() const
+    {
+        return *m_decision_maker;
+    }
+
+    bool can_afford(const JuwelCard& card) const;
+    bool purchase_card(const JuwelCard& card);
     //Action get_action(const GameState& state);
     //std::vector<Action> actions;
 

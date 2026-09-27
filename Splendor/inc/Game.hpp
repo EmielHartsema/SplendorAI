@@ -7,8 +7,10 @@
 #include <JuwelCardPyramid.hpp>
 #include <Juwel.hpp>
 #include <JuwelBoard.hpp>
+#include <Player.hpp>
 //#include <CrownCard.hpp>
 //#include <CardRow.hpp>
+#include <GameState.hpp>
 
 // The game object stores the state of the shared game board.
 // Any modifications to the shared game board must be made using the public interface.
@@ -44,6 +46,11 @@ public:
     {
         return m_juwel_board;
     }
+
+    void processDecision(Player& player);
+
+    void playFirstTurn();
+    void playTurn(Player& player);
     
 private:
     Player m_player_1;
@@ -61,4 +68,19 @@ private:
     std::vector<JuwelCard> get_juwel_cards1();
     std::vector<JuwelCard> get_juwel_cards2();
     std::vector<JuwelCard> get_juwel_cards3();
+
+    std::unique_ptr<DecisionAnswer> askDecision(
+        Player& player,
+        const PendingDecision& pending_decision);
+        
+    bool isValidAnswer(
+        Player& player,
+        const PendingDecision& pending_decision,
+        const DecisionAnswer& answer) const;
+
+    void executeAnswer(
+        Player& player,
+        const DecisionAnswer& answer);
+
+    void handleInvalidAnswer(Player& player);
 };

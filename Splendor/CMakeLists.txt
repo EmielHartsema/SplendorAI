@@ -19,6 +19,7 @@ add_library(SplendorLib
     src/Juwel.cpp
     src/GameState.cpp
     src/Player.cpp
+    src/DecisionMaker.cpp
 )
 
 target_include_directories(SplendorLib
