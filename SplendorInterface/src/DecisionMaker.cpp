@@ -1,9 +1,7 @@
 #include <DecisionMaker.hpp>
 
-#include <GameState.hpp>
 #include <Actions.hpp>
 #include <PendingDecisions.hpp>
-#include <PendingDecision.hpp>
 
 std::unique_ptr<DecisionAnswer> EmptyDecisionMaker::makeDecision(
     const GameState& game_state,

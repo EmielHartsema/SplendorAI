@@ -19,7 +19,6 @@ add_library(SplendorLib
     src/Juwel.cpp
     src/GameState.cpp
     src/Player.cpp
-    src/DecisionMaker.cpp
 )
 
 target_include_directories(SplendorLib
@@ -32,27 +31,14 @@ target_compile_features(SplendorLib
         cxx_std_20
 )
 
+target_link_libraries(SplendorLib
+    PUBLIC
+        SplendorInterface
+)
+
 set_target_properties(SplendorLib PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY_DEBUG "${SPLENDOR_BIN_DIR}/Debug"
     ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${SPLENDOR_BIN_DIR}/Release"
-)
-
-# ------------------------------------------
-# Splendor executable
-# ------------------------------------------
-
-add_executable(Splendor
-    src/main.cpp
-)
-
-target_link_libraries(Splendor
-    PRIVATE
-        SplendorLib
-)
-
-set_target_properties(Splendor PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY_DEBUG   "${SPLENDOR_BIN_DIR}/Debug"
-    RUNTIME_OUTPUT_DIRECTORY_RELEASE "${SPLENDOR_BIN_DIR}/Release"
 )
 
 # ------------------------------------------

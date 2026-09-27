@@ -37,5 +37,25 @@ enable_testing()
 # ==========================================
 # Components
 # ==========================================
+add_subdirectory(SplendorInterface)
+add_subdirectory(SplendorCore)
 
-add_subdirectory(Splendor)
+
+# ------------------------------------------
+# Splendor executable
+# ------------------------------------------
+add_executable(Splendor
+    main.cpp
+)
+
+target_link_libraries(Splendor
+    PRIVATE
+        SplendorLib
+        SplendorDecisionMakers
+)
+
+set_target_properties(Splendor PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_SOURCE_DIR}/bin/Debug"
+    RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_SOURCE_DIR}/bin/Release"
+)
+    
